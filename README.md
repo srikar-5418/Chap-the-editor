@@ -15,6 +15,7 @@
 <br>
 <p>These are the key features</p>
 <ul>
+  <li>Code can be written in 10+ languages</li>
   <li>Editor Settings</li>
   <li>Code Reset</li>
   <li>Save/Retrieve code performing CRUD operations</li>
