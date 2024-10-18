@@ -14,7 +14,7 @@ export default function SignInBar(){
     'linear(to-b, orange.100, purple.300)',
   ]}
   bgClip='text' fontSize='30' fontWeight='800'>CHAP</Text></Button> */}
-                <img src="../src/assets/chap_logo_70px.png" ></img>
+                <img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/chap_logo_70px.png" ></img>
                     </Flex>
                     {/* <SignInButton/>       */}
                     <Flex ml="auto" mr="0.5%"   justifyContent='center' alignItems="center">
