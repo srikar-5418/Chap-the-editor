@@ -7,7 +7,7 @@ export default function OutputInput({output,setInput}){
    
     return(
         <>
-        <Box w='42vw' h='93vh' minH='500px'> 
+        <Box w='42vw' h='93vh' minH='500px' minW='100px'> 
             <Flex h='13%'>
             <SignInBar/>
             </Flex>

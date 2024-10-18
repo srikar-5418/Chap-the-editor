@@ -10,7 +10,6 @@ export default function SignInBar(){
                 <Flex mr="auto" ml="0.5%"   justifyContent='center' alignItems="center">
                 <img src={chapLogo} ></img>
                     </Flex>
-                    {/* <SignInButton/>       */}
                     <Flex ml="auto" mr="0.5%"   justifyContent='center' alignItems="center">
                     <SignInButton/>      
                     </Flex>

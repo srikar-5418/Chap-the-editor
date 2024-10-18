@@ -59,7 +59,7 @@ export default function CodeEditor({setOutput,input}){
     setValue(CODE_SNIPPETS[language])
    }
     return (
-            <Box w='56vw' p='10px' mt='-5' border='1px' h={'95vh'} minH='500px' borderRadius='10' >
+            <Box w='56vw' p='10px' mt='-5' border='1px' h={'95vh'} minH='500px' minW='200px' borderRadius='10' overflow='auto' >
                    <LanguageSelector language={language} handleLanguageChange={handleLanguageChange} fntSize={fntSize} handleFontChange={handleFontChange} tbSize={tbSize} handleTabSizeChange={handleTabSizeChange} toggleVimMode={toggleVimMode} isVimEnabled={isVimEnabled} isWordWrap={isWordWrap} toggleWordWrap={toggleWordWrap}/>
                     <Editor height='80%'  theme='vs-dark' padding='2%' language={language} defaultValue={CODE_SNIPPETS[language]} value={value} onChange={(value)=>setValue(value)}
                         onMount={(editor) => {
