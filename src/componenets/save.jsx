@@ -6,23 +6,35 @@ import {
     PopoverContent,
     PopoverHeader,
     PopoverBody,
-    PopoverFooter,
     PopoverArrow,
     PopoverCloseButton,Button,
-    VStack,
     Text
   } from '@chakra-ui/react'
 import SaveCodeButton from "./saveCodeButton";
 import RetrieveCodeButton from "./retrieveCodeButton";
+import UserLoggedOut from "./UserSignedOut";
+import { auth} from '../assets/firebase';
+import { useEffect,useState } from "react";
+import { onAuthStateChanged } from 'firebase/auth';
 
 export default function SaveIcon({language}){
+    const [currUser,setCurrUser]=useState(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+          setCurrUser(currentUser); 
+        });
+        return () => unsubscribe();
+      }, []);
     const spanStyle={
         marginRight:'7px',
     }
 return (
     <>
-    {/* <Tooltip hasArrow label='save code'> */}
-        <span style={spanStyle}>
+    {currUser?
+(
+//<Tooltip hasArrow label='save code'>
+            <span style={spanStyle}>
                 <Popover>
             <PopoverTrigger>
                 <Button color="white" bg="none" varient='ghost' _hover={{color:"white",bg:"none"}}>
@@ -38,13 +50,15 @@ return (
                     {/* <VStack>
                         <SaveCodeButton language={language}/>
                         <RetrieveCodeButton/>
-                    </VStack> */}
+                        </VStack> */}
                 </PopoverBody>
                 </PopoverContent>
             </Popover>
            
         </span>
-    {/* </Tooltip> */}
+    // </Tooltip>
+        ):(<UserLoggedOut reqFrom={"saveButton"}/>)
+    }
     </>
 )
 
