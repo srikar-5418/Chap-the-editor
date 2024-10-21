@@ -2,7 +2,7 @@ import { Button,Box,Flex, useToast} from "@chakra-ui/react";
 import { executeCode } from "../assets/api";
 import {useState} from 'react';
 
-export default function Run({language,editorRef,setOutput,input}){
+export default function Run({language,editorRef,setOutput,input,setError}){
   const toast=useToast();
   const [isLoading,setIsLoadIng]=useState(false)
   async function onRun(){
@@ -12,8 +12,9 @@ export default function Run({language,editorRef,setOutput,input}){
       setIsLoadIng(true)
       const {run:result} =await executeCode(language,sourceCode,input);
       setOutput(result.output.split("\n"));
+      result.stderr?setError(true):setError(false)
     }catch(err){
-      console.log(err)
+      // console.log(err)
       toast({
         title:"An Error Occured",
         description:err.message || "unable to run the code",

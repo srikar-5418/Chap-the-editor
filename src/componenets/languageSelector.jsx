@@ -3,7 +3,7 @@ import {
     MenuButton,
     MenuList,
     MenuItem,Button,
-   Box,Tooltip ,Flex,
+   Box,Flex,
   } from '@chakra-ui/react'
   
 import { LANGUAGE_VERSIONS } from '../languageInfo'
@@ -14,7 +14,7 @@ import SaveIcon from './save'
 const languages=Object.entries(LANGUAGE_VERSIONS)
 
 // eslint-disable-next-line react/prop-types
-export default function LanguageSelector({language,handleLanguageChange,fntSize,handleFontChange,tbSize,handleTabSizeChange,toggleVimMode,isVimEnabled,isWordWrap,toggleWordWrap}){
+export default function LanguageSelector({language,handleLanguageChange,fntSize,handleFontChange,tbSize,handleTabSizeChange,toggleVimMode,isVimEnabled,isWordWrap,toggleWordWrap,editorRef,loadedCode}){
    
     return (
         <Box ml={2} mb={2}>
@@ -50,8 +50,8 @@ export default function LanguageSelector({language,handleLanguageChange,fntSize,
             </Menu>
                     <LanuageInfo language={language}/>
             <Flex ml="auto" alignItems="center">
-                    <SaveIcon language={language}/>
-                    <ResetCode language={language} handleChangeLanguage={handleLanguageChange}/>
+                    <SaveIcon language={language} editorRef={editorRef} handleLanguageChange={handleLanguageChange} loadedCode={loadedCode}/>
+                    <ResetCode language={language} handleChangeLanguage={handleLanguageChange} loadedCode={loadedCode}/>
                     <SetValues fntSize={fntSize}  handleFontChange={handleFontChange} tbSize={tbSize} handleTabSizeChange={handleTabSizeChange} toggleVimMode={toggleVimMode} isVimEnabled={isVimEnabled} isWordWrap={isWordWrap} toggleWordWrap={toggleWordWrap}/>
             </Flex>
         </Flex>

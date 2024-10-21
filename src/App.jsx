@@ -7,11 +7,12 @@ import { useState } from "react";
 function App() {
   const [output,setOutput]=useState('click "Run" to run the code')
   const [input,setInput]=useState('click "Run" to run the code')
+  const [error,setError]=useState(false)
   return (
     <Box minH='100vh' bg='#0f0a19' color='gray.600' px={6} py={8}>
       <HStack>
-        <OutputInput output={output} setInput={setInput}/>
-        <CodeEditor setOutput={setOutput} input={input}/>
+        <OutputInput output={output} setInput={setInput} error={error}/>
+        <CodeEditor setOutput={setOutput} input={input} setError={setError}/>
       </HStack>
     </Box>
 

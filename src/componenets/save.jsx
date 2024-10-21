@@ -7,17 +7,17 @@ import {
     PopoverHeader,
     PopoverBody,
     PopoverArrow,
-    PopoverCloseButton,Button,
-    Text
+    PopoverCloseButton,Button,VStack,
   } from '@chakra-ui/react'
 import SaveCodeButton from "./saveCodeButton";
 import RetrieveCodeButton from "./retrieveCodeButton";
+import UpdateCodeButton from "./updateCode";
 import UserLoggedOut from "./UserSignedOut";
 import { auth} from '../assets/firebase';
 import { useEffect,useState } from "react";
 import { onAuthStateChanged } from 'firebase/auth';
 
-export default function SaveIcon({language}){
+export default function SaveIcon({language,editorRef,handleLanguageChange,loadedCode}){
     const [currUser,setCurrUser]=useState(null);
 
     useEffect(() => {
@@ -46,11 +46,11 @@ return (
                 <PopoverHeader textAlign='center'>Save Code</PopoverHeader>
                 <PopoverCloseButton />
                 <PopoverBody>
-                    <Text>This feature will be released soon</Text>
-                    {/* <VStack>
-                        <SaveCodeButton language={language}/>
-                        <RetrieveCodeButton/>
-                        </VStack> */}
+                    {/* <Text>This feature will be released soon</Text> */}
+                    <VStack>
+                        {loadedCode===null?(<SaveCodeButton language={language} editorRef={editorRef}/>):(<UpdateCodeButton language={language} loadedCode={loadedCode} editorRef={editorRef}/>)}
+                        <RetrieveCodeButton handleLanguageChange={handleLanguageChange}/>
+                        </VStack>
                 </PopoverBody>
                 </PopoverContent>
             </Popover>

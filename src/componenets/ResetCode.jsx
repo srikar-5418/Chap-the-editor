@@ -7,18 +7,34 @@ import {
     ModalContent,
     ModalOverlay,
     ModalCloseButton,
-    Tooltip,Divider,
+    Tooltip,Divider,useToast,
   } from '@chakra-ui/react'
 import { useDisclosure ,Button} from '@chakra-ui/react'
 import { useRef } from 'react'
-  export default function ResetCode({language,handleChangeLanguage}){
+  export default function ResetCode({language,handleChangeLanguage,loadedCode}){
     const { isOpen, onOpen, onClose } = useDisclosure()
-  const cancelRef = useRef()
+   const cancelRef = useRef()
+  const toast=useToast();
  async function resetcode()
  {
-     onClose();
-     let s=language
-    await handleChangeLanguage(s);
+   
+   toast.close(cancelRef.current);
+   let s=language
+   await handleChangeLanguage(s,"reset");
+   onClose();
+ }
+ function openReset(){
+  if(loadedCode!==null){
+    cancelRef.current=toast({
+     description:'Make sure to update the loaded code before reset',
+     duration:4000,
+    })
+   }
+   onOpen();
+ }
+ function closeReset(){
+  onClose();
+  toast.close(cancelRef.current);
  }
  const spanStyle={
   marginRight:'20px',
@@ -27,7 +43,7 @@ import { useRef } from 'react'
     <>
     <Tooltip hasArrow label='Reset'  closeOnClick={false}>
       <span style={spanStyle}>
-        <RepeatIcon mb='1' color="white" onClick={onOpen}/>
+        <RepeatIcon mb='1' color="white" onClick={()=>openReset()}/>
       </span>
     </Tooltip>
       <Modal
@@ -41,16 +57,16 @@ import { useRef } from 'react'
 
         <ModalContent bg='black' color='white' border='1px' borderColor='white' alignContent='center'>
           <ModalHeader textAlign='center'>Reset Code</ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton onClick={closeReset}/>
           <Divider/>
           <ModalBody>
             Are you sure that you want to Reset all the code you have written?
           </ModalBody>
           <ModalFooter mr='31%'>
-            <Button ref={cancelRef} colorScheme='white' variant='outline' _hover={{bg:'green.500', color:'white', borderColor:'green.500'}} onClick={onClose}>
+            <Button colorScheme='white' variant='outline' _hover={{bg:'green.500', color:'white', borderColor:'green.500'}} onClick={closeReset}>
               No
             </Button>
-            <Button ref={cancelRef} colorScheme='white' variant='outline' _hover={{bg:'red.500', color:'white', borderColor:'red.500'}} ml={3} onClick={()=>resetcode()}>
+            <Button colorScheme='white' variant='outline' _hover={{bg:'red.500', color:'white', borderColor:'red.500'}} ml={3} onClick={()=>resetcode()}>
               Yes
             </Button>
           </ModalFooter>

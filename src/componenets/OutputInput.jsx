@@ -3,7 +3,7 @@ import InputBox from "./InputBox";
 import OutputBox from "./OutputBox";
 import SignInBar from "./signInBar";
 
-export default function OutputInput({output,setInput}){
+export default function OutputInput({output,setInput,error}){
    
     return(
         <>
@@ -14,7 +14,7 @@ export default function OutputInput({output,setInput}){
             <Box w='100%' p='10px' border='1px' h='87%' minH='350px' borderRadius='10'>
             <InputBox setInput={setInput}/>
             <Divider mt='2'/>
-            <OutputBox output={output}/>
+            <OutputBox output={output} error={error}/>
             </Box>
         </Box>
         </>

@@ -9,7 +9,7 @@ import {
   VStack,
   Text,
   Divider,
-  useDisclosure,
+  useDisclosure,useToast,
 } from '@chakra-ui/react';
 import { useRef } from 'react';
 import { FcGoogle } from "react-icons/fc";
@@ -19,6 +19,7 @@ import { auth,googleProvider,githubProvider } from '../assets/firebase';
 import { signInWithPopup } from 'firebase/auth';
 
 export default function UserLoggedOut({reqFrom}) {
+  const toast=useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef();
   async function signInWithGoogle() {
@@ -26,16 +27,24 @@ export default function UserLoggedOut({reqFrom}) {
      await signInWithPopup(auth,googleProvider);
      
     }catch(err){
-     console.log(err);
-      //  setErr(err.message);
+        toast({
+          title:"An Error Occured",
+          description:err.message || "unable to Sign In",
+          status:'error',
+          duration:6000
+        })
     }
 }
 async function signInWithGithub() {
     try{
      await signInWithPopup(auth,githubProvider);
     }catch(err){
-     console.log(err);
-      //  setErr(err.message);
+      toast({
+        title:"An Error Occured",
+        description:err.message || "unable to run the code",
+        status:'error',
+        duration:6000
+      })
     }
 }
 const spanStyle={

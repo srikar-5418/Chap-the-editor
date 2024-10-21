@@ -9,15 +9,33 @@ import {
   VStack,Text,
   Avatar,useToast
 } from '@chakra-ui/react'
-import { useRef } from 'react'
+import { useRef} from 'react'
 import { FcGoogle } from 'react-icons/fc'
+import { FaGithub } from "react-icons/fa";
+import { signOut } from 'firebase/auth';
+import { auth } from '../assets/firebase';
 
-export default function UserLoggedIn({user,signOutFromApp}){
+export default function UserLoggedIn(){
+    const toast=useToast();
+
+        async function signOutFromApp(){
+            try{
+               await signOut(auth);
+            } catch(err)
+            {
+                toast({
+                    title:"An Error Occured",
+                    description:err.message || "unable to Sign Out",
+                    status:'error',
+                    duration:6000
+                  })
+            }
+        }
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef()
   return(
       <>
-       <Avatar src={user.photoURL} onClick={onOpen} mt='-1'mr='1'/>
+       <Avatar src={auth.currentUser.photoURL} onClick={onOpen} mt='-1'mr='1'/>
               <Modal
               motionPreset='slideInBottom'
               leastDestructiveRef={cancelRef}
@@ -27,11 +45,11 @@ export default function UserLoggedIn({user,signOutFromApp}){
               >
           <ModalOverlay />
           <ModalContent  bg='black' color='white' border='1px' borderColor='white' alignContent='center'>
-          <ModalHeader textAlign='center'>👋 {user.email}</ModalHeader>
+          <ModalHeader textAlign='center'>👋 {auth.currentUser.email}</ModalHeader>
           <Divider color='gray.100'/>
           <ModalBody>
               <VStack m='4' mb='0'>
-                  <Button><FcGoogle size='22' /><Text ml='2' onClick={signOutFromApp}>Sign Out</Text></Button>
+                  <Button>{auth.currentUser.providerData[0].providerId==='google.com'?(<FcGoogle size='22' />):(<FaGithub size='22' /> )}<Text ml='2' onClick={signOutFromApp}>Sign Out</Text></Button>
               </VStack>
           </ModalBody> 
           <ModalFooter mr='35%'>
