@@ -25,24 +25,26 @@ export default function SaveCodeButton({language,editorRef}){
     const [title,setTitle]=useState("");
     async function saveCode(){
         try{
-            const userRef= doc(db,"user",auth.currentUser.uid);
-            const data= {
-                Name:title,
-                code:editorRef.current.getValue(),
-                language:language,
-                version:LANGUAGE_VERSIONS[language],
+                if(title.length!==0){
+
+                    const userRef= doc(db,"user",auth.currentUser.uid);
+                    const data= {
+                    Name:title,
+                    code:editorRef.current.getValue(),
+                    language:language,
+                    version:LANGUAGE_VERSIONS[language],
+                }
+                const codeRef=await addDoc(collection(db,"code"),data);
+                const userAddData={
+                    id:codeRef.id,
+                    name:title,
+                    language:language,
+                }
+                await setDoc(userRef,{
+                    code:arrayUnion(userAddData),
+                },{merge:true})
             }
-            const codeRef=await addDoc(collection(db,"code"),data);
-            const userAddData={
-                id:codeRef.id,
-                name:title,
-                language:language,
-            }
-            await setDoc(userRef,{
-                code:arrayUnion(userAddData),
-            },{merge:true})
         }catch(err){
-            console.log(err)
             toast({
                 title:"An Error Occured",
                 description:err.message || "unable to save the code",
@@ -51,7 +53,9 @@ export default function SaveCodeButton({language,editorRef}){
               })
         }
         finally{
-            onClose();
+            if(title.length!==0){
+                onClose();
+            }
         }
     }
     const { isOpen, onOpen, onClose } = useDisclosure()
