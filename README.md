@@ -15,13 +15,14 @@
 <br>
 <p>These are the key features</p>
 <ul>
+  <li>Vim key bindings with mode status bar</li>
   <li>Code can be written in 10+ languages</li>
   <li>Editor Settings</li>
   <li>Code Reset</li>
   <li>Save/Retrieve code performing CRUD operations</li>
 </ul>
 <br>
-<a href="https://chap-the-editor-j84y-git-main-srikar-5418s-projects.vercel.app/">This is Apps deployed link<br></a>
+<a href="https://chap-the-editor.vercel.app/">This is Apps deployed link<br></a>
 <br>
 <img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(137).png"></img><br>
 <img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(138).png"></img><br>
