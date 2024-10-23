@@ -1,16 +1,15 @@
 import {Box, } from '@chakra-ui/react'
-import  { useRef, useState, useEffect } from 'react';
+import  { useRef, useState} from 'react';
 import { Editor } from '@monaco-editor/react'
 import LanguageSelector from './languageSelector';
 import { CODE_SNIPPETS } from '../languageInfo';
-import { initVimMode } from 'monaco-vim';
 import Run from './run';
 import { db } from '../assets/firebase';
 import { doc,getDoc } from 'firebase/firestore';
 
 export default function CodeEditor({setOutput,input,setError}){
     const editorRef = useRef(null);
-    const vimStatusRef = useRef(null);
+    var statusNode = useRef(null);
     const [value,setValue]=useState('');
     const [language,setLanguage]=useState("java")
     const [fntSize,setFntsize]=useState("16px  ")
@@ -36,27 +35,38 @@ export default function CodeEditor({setOutput,input,setError}){
     function handleTabSizeChange(tbSize){
         setTbsize(tbSize);
     }
-  function handleEditorDidMount(editor) {
+    function handleEditorDidMount(editor) {
       editorRef.current = editor;
-      if (isVimEnabled) {
-          vimModeRef.current = initVimMode(editor, vimStatusRef.current);
-        }
-   
-  }
+      if(isVimEnabled){
+
+        window.require.config({
+          paths: {
+            'monaco-vim': 'https://unpkg.com/monaco-vim/dist/monaco-vim',
+          }
+        });
+        window.require(["monaco-vim"], function (MonacoVim) {
+          statusNode.current=document.getElementById('status-code')
+          vimModeRef.current=MonacoVim.initVimMode(editorRef.current, statusNode.current);
+        });
+      }
+    }
   function toggleVimMode() {
     if (isVimEnabled) {
-      vimModeRef.current && vimModeRef.current.dispose();
+      vimModeRef.current && vimModeRef.current.dispose()&&statusNode.current.dispose();
+      
     } else {
-      vimModeRef.current = initVimMode(editorRef.current, vimStatusRef.current);
-    }
-    setIsVimEnabled((prev) => !prev); 
+      statusNode.current=document.getElementById('status-code')
+        window.require.config({
+        paths: {
+          'monaco-vim': 'https://unpkg.com/monaco-vim/dist/monaco-vim',
+        }
+      });
+      window.require(["monaco-vim"], function (MonacoVim) {
+        vimModeRef.current=MonacoVim.initVimMode(editorRef.current, statusNode.current);
+      });
+      }
+    setIsVimEnabled(!isVimEnabled); 
   }
-
-  useEffect(() => {
-    return () => {
-      vimModeRef.current && vimModeRef.current.dispose();
-    };
-  }, []);
  async function handleLanguageChange(languageSent,reset,value=null){
     if(value===null){
       if(reset==="reset"){
@@ -76,7 +86,6 @@ export default function CodeEditor({setOutput,input,setError}){
       setValue(docSnap.data().code)
       setLoadedCode(value)
     }
-    console.log(loadedCode)
    }
     return (
             <Box w='56vw' p='10px' mt='-5' border='1px' h={'95vh'} minH='500px' minW='200px' borderRadius='10' overflow='auto' >
@@ -95,6 +104,7 @@ export default function CodeEditor({setOutput,input,setError}){
                             automaticLayout: true, // Optional: for auto layout
                         }}
                     />
+                    <code id='status-code'></code>
                 <Run language={language} editorRef={editorRef} setOutput={setOutput} input={input} setError={setError}/>
             </Box>
  
