@@ -90,7 +90,7 @@ export default function CodeEditor({setOutput,input,setError}){
     return (
             <Box w='56vw' p='10px' mt='-5' border='1px' h={'95vh'} minH='500px' minW='200px' borderRadius='10' overflow='auto' >
                    <LanguageSelector language={language} handleLanguageChange={handleLanguageChange} fntSize={fntSize} handleFontChange={handleFontChange} tbSize={tbSize} handleTabSizeChange={handleTabSizeChange} toggleVimMode={toggleVimMode} isVimEnabled={isVimEnabled} isWordWrap={isWordWrap} toggleWordWrap={toggleWordWrap} editorRef={editorRef} loadedCode={loadedCode}/>
-                    <Editor height='80%'  theme='vs-dark' padding='2%' language={language} defaultValue={CODE_SNIPPETS[language]} value={value} onChange={(value)=>setValue(value)}
+                    <Editor height={isVimEnabled?'77.5%':'82%'}  theme='vs-dark' padding='2%' language={language} defaultValue={CODE_SNIPPETS[language]} value={value} onChange={(value)=>setValue(value)}
                         onMount={(editor) => {
                             handleEditorDidMount(editor);
                         }}
