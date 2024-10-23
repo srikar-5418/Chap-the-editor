@@ -71,6 +71,7 @@ export default function RetrieveCodeButton({handleLanguageChange}){
   async function deleteCode(codeSent){
     try{
         const codeRef=await doc(db,"code",codeSent.id);
+        handleLanguageChange(codeSent.language,"reset");
         await deleteDoc(codeRef);
         await setDoc(doc(db,"user",auth.currentUser.uid),{
             code:arrayRemove(codeSent)
