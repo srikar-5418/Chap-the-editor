@@ -29,7 +29,7 @@ export default function LanguageSelector({language,handleLanguageChange,fntSize,
                         bordersize="0px"
                         _hover={{ bg: 'white', color: 'black' }}
                         _action={{ bg: 'white', color: 'black' }}
-                        _expanded={{ border: 'none', color: 'white', bgGradient: 'linear(to-r, teal.500, green.500)' }}
+                        _expanded={{ border: 'solid', borderColor:'black', color: 'white', bgGradient: 'linear(to-r, teal.500, green.500)' }}
                     >
                         {language}
                     </MenuButton>
