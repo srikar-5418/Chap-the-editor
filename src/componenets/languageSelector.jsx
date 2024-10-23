@@ -26,7 +26,7 @@ export default function LanguageSelector({language,handleLanguageChange,fntSize,
                         bg="black"
                         as={Button}
                         border="solid"
-                        borderSize="0px"
+                        bordersize="0px"
                         _hover={{ bg: 'white', color: 'black' }}
                         _action={{ bg: 'white', color: 'black' }}
                         _expanded={{ border: 'none', color: 'white', bgGradient: 'linear(to-r, teal.500, green.500)' }}

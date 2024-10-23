@@ -10,6 +10,7 @@ import {
   Text,
   Divider,
   useDisclosure,useToast,
+  Tooltip,
 } from '@chakra-ui/react';
 import { useRef } from 'react';
 import { FcGoogle } from "react-icons/fc";
@@ -57,11 +58,13 @@ const spanStyle={
       (
       <Button colorScheme="white" flex='1' maxW="80%" maxH="70%" variant='outline' _hover={{ bg: "white", color: 'black' }} onClick={onOpen}>
         Sign In
-      </Button>):( <span style={spanStyle}>
+      </Button>):(
+        <span style={spanStyle}>
          <Button color="white" bg="none" varient='ghost' _hover={{color:"white",bg:"none"}}onClick={onOpen}>
                   <FaRegBookmark color="white" bg="black" size="15"  cursor="pointer" />
                 </Button>
-      </span>)
+         </span>
+      )
       }
       <Modal
         motionPreset='slideInBottom'
@@ -72,7 +75,7 @@ const spanStyle={
       >
         <ModalOverlay />
         <ModalContent bg='black' color='white' border='1px' borderColor='white' alignContent='center'>
-          <ModalHeader textAlign='center'>Sign In</ModalHeader>
+          <ModalHeader textAlign='center'>{reqFrom==='signInButton'?"Sign In":"Sign In to Save Code"}</ModalHeader>
           <Divider color='gray.100' />
           <ModalBody>
             <VStack m='4' mb='4'>
@@ -88,7 +91,7 @@ const spanStyle={
             </Text>
           </ModalBody>
           <ModalFooter mr='35%'>
-            <Button ref={cancelRef} colorScheme='white' variant='outline' _hover={{ bg: 'red.400', color: 'white', borderColor: 'red.500' }} onClick={onClose}>
+            <Button ref={cancelRef} colorScheme='white' variant='outline' _hover={{ bg: 'red.400', color: 'white', borderColor: 'red.500' }} onClick={()=>{onClose()}}>
               Cancel
             </Button>
           </ModalFooter>
