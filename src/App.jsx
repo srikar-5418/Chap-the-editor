@@ -30,7 +30,7 @@ function App() {
       >
         <SplitterPanel 
           className="flex align-items-center justify-content-center" 
-          size={40} 
+          size={45} 
           minSize={20}
           style={{ overflow: 'hidden' } }
         >
@@ -38,7 +38,7 @@ function App() {
         </SplitterPanel>
         <SplitterPanel 
           className="flex align-items-center justify-content-center" 
-          size={60} 
+          size={55} 
           minSize={30}
           style={{ overflow: 'hidden' }}
         >
