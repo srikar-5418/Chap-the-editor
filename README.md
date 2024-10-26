@@ -15,6 +15,7 @@
 <br>
 <p>These are the key features</p>
 <ul>
+  <li>Dynamic layout like leetcode</li>
   <li>Vim key bindings with mode status bar</li>
   <li>Code can be written in 10+ languages</li>
   <li>Editor Settings</li>
@@ -23,6 +24,8 @@
 </ul>
 <br>
 <a href="https://chap-the-editor.vercel.app/">This is Apps deployed link<br></a>
+<br>
+https://github.com/user-attachments/assets/2e63fd94-42b8-47fe-818f-0ccf7c0c6927
 <br>
 <img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(137).png"></img><br>
 <img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(138).png"></img><br>
