@@ -25,7 +25,7 @@
 <br>
 <a href="https://chap-the-editor.vercel.app/">This is Apps deployed link<br></a>
 <br>
-<a href="https://www.youtube.com/watch?v=1h62c1IwA2M">Video explanation<br></a>
+<a href="https://www.youtube.com/watch?v=1h62c1IwA2M">Video demonstration<br></a>
 <br>
 
 
