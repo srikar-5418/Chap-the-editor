@@ -25,9 +25,24 @@
 <br>
 <a href="https://chap-the-editor.vercel.app/">This is Apps deployed link<br></a>
 <br>
-https://github.com/user-attachments/assets/2e63fd94-42b8-47fe-818f-0ccf7c0c6927
+<a href="https://www.youtube.com/watch?v=1h62c1IwA2M">Video explanation<br></a>
 <br>
+
+
+https://github.com/user-attachments/assets/826dae8c-85b5-4044-ae29-c872bcdc299f
+
+
+<br>
+
+<img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(141).png"></img><br>
+<img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(142).png"></img><br>
+<img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(143).png"></img><br>
+<img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(144).png"></img><br>
+<img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(145).png"></img><br>
+<img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(146).png"></img><br>
+<img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(147).png"></img><br>
+<img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(148).png"></img><br>
 <img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(137).png"></img><br>
 <img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(138).png"></img><br>
-<img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(140).png"></img><br>
 <img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(139).png"></img><br>
+<img src="https://github.com/srikar-5418/Chap-the-editor/blob/main/src/assets/Screenshot%20(140).png"></img><br>
