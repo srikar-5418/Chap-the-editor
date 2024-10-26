@@ -87,26 +87,57 @@ export default function CodeEditor({setOutput,input,setError}){
       setLoadedCode(value)
     }
    }
-    return (
-            <Box w='56vw' p='10px' mt='-5' border='1px' h={'95vh'} minH='500px' minW='200px' borderRadius='10' overflow='auto' >
-                   <LanguageSelector language={language} handleLanguageChange={handleLanguageChange} fntSize={fntSize} handleFontChange={handleFontChange} tbSize={tbSize} handleTabSizeChange={handleTabSizeChange} toggleVimMode={toggleVimMode} isVimEnabled={isVimEnabled} isWordWrap={isWordWrap} toggleWordWrap={toggleWordWrap} editorRef={editorRef} loadedCode={loadedCode}/>
-                    <Editor height={isVimEnabled?'77.5%':'82%'}  theme='vs-dark' padding='2%' language={language} defaultValue={CODE_SNIPPETS[language]} value={value} onChange={(value)=>setValue(value)}
-                        onMount={(editor) => {
-                            handleEditorDidMount(editor);
-                        }}
-                        options={{
-                            fontSize: fntSize, // Set font size
-                            tabSize: tbSize,
-                            wordWrap: wordWrap, // Set tab size
-                            minimap: {
-                            enabled: false,
-                            },
-                            automaticLayout: true, // Optional: for auto layout
-                        }}
-                    />
-                    <code id='status-code'></code>
-                <Run language={language} editorRef={editorRef} setOutput={setOutput} input={input} setError={setError}/>
-            </Box>
- 
-    )
+   return (
+    <Box 
+      p="10px" 
+      border="1px" 
+      height="97%" 
+      width="100%"
+      borderRadius="10" 
+      overflow="auto"
+      mt='2'
+    >
+      <LanguageSelector 
+        language={language} 
+        handleLanguageChange={handleLanguageChange} 
+        fntSize={fntSize} 
+        handleFontChange={handleFontChange} 
+        tbSize={tbSize} 
+        handleTabSizeChange={handleTabSizeChange} 
+        toggleVimMode={toggleVimMode} 
+        isVimEnabled={isVimEnabled} 
+        isWordWrap={isWordWrap} 
+        toggleWordWrap={toggleWordWrap} 
+        editorRef={editorRef} 
+        loadedCode={loadedCode}
+      />
+      <Editor 
+        height={isVimEnabled ? '77.5%' : '82%'}
+        theme="vs-dark" 
+        padding="2%" 
+        language={language} 
+        defaultValue={CODE_SNIPPETS[language]} 
+        value={value} 
+        onChange={(value) => setValue(value)}
+        onMount={handleEditorDidMount}
+        options={{
+          fontSize: fntSize,
+          tabSize: tbSize,
+          wordWrap: wordWrap,
+          minimap: {
+            enabled: false,
+          },
+          automaticLayout: true,
+        }}
+      />
+      <code id="status-code"></code>
+      <Run 
+        language={language} 
+        editorRef={editorRef} 
+        setOutput={setOutput} 
+        input={input} 
+        setError={setError}
+      />
+    </Box>
+  )
 }

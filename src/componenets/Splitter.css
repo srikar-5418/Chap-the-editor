@@ -1,0 +1,106 @@
+/* Style the splitter gutter (the draggable area) */
+.custom-splitter .p-splitter-gutter {
+    background-color: #0f0a19 !important;
+    transition: background-color 0.2s;
+}
+
+/* Style the handle */
+.custom-splitter .p-splitter-gutter-handle {
+    background: transparent;
+    position: relative;
+}
+
+/* Add visual indicator lines */
+.custom-splitter .p-splitter-gutter-handle::before,
+.custom-splitter .p-splitter-gutter-handle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 30px;
+    height: 2px;
+    background-color: #4a5568;
+    transform: translateX(-50%);
+    transition: background-color 0.2s;
+}
+
+.custom-splitter .p-splitter-gutter-handle::before {
+    top: 2px;
+}
+
+.custom-splitter .p-splitter-gutter-handle::after {
+    bottom: 2px;
+}
+
+/* Hover effects */
+.custom-splitter .p-splitter-gutter:hover {
+    background-color: #4a5568 !important;
+    cursor: row-resize;
+}
+
+.custom-splitter .p-splitter-gutter:hover .p-splitter-gutter-handle::before,
+.custom-splitter .p-splitter-gutter:hover .p-splitter-gutter-handle::after {
+    background-color: #a0aec0;
+}
+
+/* Make the gutter slightly thicker for better usability */
+.custom-splitter .p-splitter-gutter {
+    height: 6px !important;
+}
+
+/* Adjust handle height */
+.custom-splitter .p-splitter-gutter-handle {
+    height: 100% !important;
+}
+
+/* Style the main horizontal splitter */
+
+
+/* Style the gutter (the draggable area) */
+.main-splitter .p-splitter-horizontal-gutter {
+    transition: background-color 0.2s;
+    width: 6px !important;
+}
+
+/* Style the handle */
+.main-splitter .p-splitter-horizontal-gutter-handle {
+    background: transparent;
+    position: relative;
+    width: 100% !important;
+}
+
+/* Add visual indicator lines */
+.main-splitter .p-splitter-horizontal-gutter-handle::before,
+.main-splitter .p-splitter-horizontal-gutter-handle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 30px;
+    width: 2px;
+    background-color: #4a5568;
+    transform: translateY(-50%);
+    transition: background-color 0.2s;
+}
+
+.main-splitter .p-splitter-horizontal-gutter-handle::before {
+    left: 2px;
+}
+
+.main-splitter .p-splitter-horizontal-gutter-handle::after {
+    right: 2px;
+}
+
+/* Hover effects */
+.main-splitter .p-splitter-horizontal-gutter:hover {
+    background-color: #4a5568 !important;
+    cursor: col-resize;
+}
+
+.main-splitter .p-splitter-horizontal-gutter:hover .p-splitter-horizontal-gutter-handle::before,
+.main-splitter .p-splitter-horizontal-gutter:hover .p-splitter-horizontal-gutter-handle::after {
+    background-color: #a0aec0;
+}
+
+/* Style the panels */
+.main-splitter .p-splitter-horizontal-panel {
+    background-color: #0f0a19 !important;
+}

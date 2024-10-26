@@ -1,22 +1,62 @@
-import { Box, Divider, Flex, } from "@chakra-ui/react";
+import { Box, Divider, Flex } from "@chakra-ui/react";
 import InputBox from "./InputBox";
 import OutputBox from "./OutputBox";
 import SignInBar from "./signInBar";
+import { Splitter, SplitterPanel } from 'primereact/splitter';
+import "./Splitter.css";
 
-export default function OutputInput({output,setInput,error}){
-   
-    return(
-        <>
-        <Box w='42vw' h='93vh' minH='500px' minW='100px'> 
-            <Flex h='13%'>
-            <SignInBar/>
-            </Flex>
-            <Box w='100%' p='10px' border='1px' h='87%' minH='350px' borderRadius='10'>
+export default function OutputInput({output, setInput, error}) {
+  return (
+    <Box 
+      display="flex"
+      flexDirection="column"
+      height="98%" 
+      width="100%" 
+      gap={3}
+      pt={2.5}
+    > 
+      <Box flexShrink={0}>
+        <SignInBar/>
+      </Box>
+      <Box 
+        flex={1}
+        width="100%" 
+        p="10px" 
+        border="1px" 
+        borderRadius="10"
+        overflow="hidden"
+      >
+        <Splitter 
+          style={{ 
+            height: '100%',
+            width: '100%',
+            border: 'none'
+          }} 
+          layout="vertical"
+          className="custom-splitter "
+        >
+          <SplitterPanel 
+            className="flex align-items-center justify-content-center" 
+            size={40} 
+            minSize={27}
+            style={{ 
+              overflow: 'hidden',
+            }}
+          >
             <InputBox setInput={setInput}/>
-            <Divider mt='2'/>
+          </SplitterPanel>
+          <SplitterPanel 
+            className="flex align-items-center justify-content-center"  
+            size={60} 
+            minSize={30}
+            style={{ 
+              overflow: 'hidden',
+            }}
+          >
             <OutputBox output={output} error={error}/>
-            </Box>
-        </Box>
-        </>
-    )
+          </SplitterPanel>
+        </Splitter>
+      </Box>
+    </Box>
+  )
 }
