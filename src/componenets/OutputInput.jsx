@@ -1,4 +1,4 @@
-import { Box, Divider, Flex } from "@chakra-ui/react";
+import { Box} from "@chakra-ui/react";
 import InputBox from "./InputBox";
 import OutputBox from "./OutputBox";
 import SignInBar from "./signInBar";
@@ -14,6 +14,8 @@ export default function OutputInput({output, setInput, error}) {
       width="100%" 
       gap={3}
       pt={2.5}
+      ml='1'
+      mr='0.5'
     > 
       <Box flexShrink={0}>
         <SignInBar/>

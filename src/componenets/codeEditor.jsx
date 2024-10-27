@@ -92,10 +92,11 @@ export default function CodeEditor({setOutput,input,setError}){
       p="10px" 
       border="1px" 
       height="97%" 
-      width="100%"
+      width="99%"
       borderRadius="10" 
       overflow="auto"
       mt='2'
+      ml='0.5'
     >
       <LanguageSelector 
         language={language} 

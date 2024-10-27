@@ -26,6 +26,7 @@ function App() {
           height: '100%',
           background: '#0f0a19'
         }}
+        layout="horizontal"
         className="main-splitter"
       >
         <SplitterPanel 
