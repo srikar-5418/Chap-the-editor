@@ -52,6 +52,7 @@ const spanStyle={
   marginRight:'7px',
 }
  function handleOpen(){
+  if(reqFrom!=="signInButton")
   cancelRef.current.blur();
   onOpen();
  }
