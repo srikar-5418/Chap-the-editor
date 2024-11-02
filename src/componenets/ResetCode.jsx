@@ -43,7 +43,7 @@ import { useRef } from 'react'
     <>
     <Tooltip hasArrow label='Reset'  closeOnClick={false}>
       <span style={spanStyle}>
-        <RepeatIcon mb='1' color="white" onClick={()=>openReset()}/>
+        <RepeatIcon mb='1' color="white" onClick={()=>openReset()} cursor='pointer'/>
       </span>
     </Tooltip>
       <Modal

@@ -51,18 +51,24 @@ async function signInWithGithub() {
 const spanStyle={
   marginRight:'7px',
 }
+ function handleOpen(){
+  cancelRef.current.blur();
+  onOpen();
+ }
   return (
     <>
     {
       reqFrom==="signInButton"?
       (
-      <Button colorScheme="white" flex='1' maxW="80%" maxH="70%" variant='outline' _hover={{ bg: "white", color: 'black' }} onClick={onOpen}>
+      <Button ref={cancelRef} colorScheme="white" flex='1' maxW="80%" maxH="70%" variant='outline' _hover={{ bg: "white", color: 'black' }} onClick={handleOpen}>
         Sign In
       </Button>):(
         <span style={spanStyle}>
-         <Button color="white" bg="none" varient='ghost' _hover={{color:"white",bg:"none"}}onClick={onOpen}>
+          <Tooltip hasArrow label='Save Code' mt='-2'>
+         <Button ref={cancelRef} color="white" bg="none" varient='ghost' _hover={{color:"white",bg:"none"}}onClick={handleOpen}>
                   <FaRegBookmark color="white" bg="black" size="15"  cursor="pointer" />
                 </Button>
+          </Tooltip>
          </span>
       )
       }

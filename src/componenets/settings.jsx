@@ -29,7 +29,7 @@ export default function SetValues({fntSize,handleFontChange,tbSize,handleTabSize
     <>
     <Tooltip hasArrow label='Settings' closeOnClick={false}>
       <span style={spanStyle}>
-        <SettingsIcon color='white'  mb='1'onClick={onOpen}/>
+        <SettingsIcon color='white'  mb='1'onClick={onOpen} cursor='pointer'/>
       </span>
     </Tooltip>
       <Modal motionPreset='slideInBottom'
