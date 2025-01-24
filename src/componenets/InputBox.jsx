@@ -1,6 +1,6 @@
 import { Box, Text, Textarea } from "@chakra-ui/react";
 
-export default function InputBox({setInput}){
+export default function InputBox({setInput,input}){
     return (
         <>
         <Box 
@@ -17,6 +17,7 @@ export default function InputBox({setInput}){
                 placeholder="Give input here...."
                 size="sm"
                 marginBottom='2'
+                value={input}
                 onChange={(e) => setInput(e.target.value)}
                 sx={{
                     '&::-webkit-scrollbar': {

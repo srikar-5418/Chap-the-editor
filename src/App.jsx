@@ -8,26 +8,19 @@ import './componenets/Splitter.css'
 
 function App() {
   const [output, setOutput] = useState('click "Run" to run the code')
-  const [input, setInput] = useState('click "Run" to run the code')
+  const [input, setInput] = useState('')
   const [error, setError] = useState(false)
   const [isVertical, setIsVertical] = useState(false)
 
   useEffect(() => {
     const checkOrientation = () => {
-      // Check if the screen is in portrait mode or width is less than height
       const vertical = window.innerHeight > window.innerWidth
       setIsVertical(vertical)
     }
-
-    // Check orientation on mount and add resize listener
     checkOrientation()
     window.addEventListener('resize', checkOrientation)
-
-    // Cleanup listener
     return () => window.removeEventListener('resize', checkOrientation)
   }, [])
-
-  // Render for horizontal (desktop) layout
   if (!isVertical) {
     return (
       <Box 
@@ -52,7 +45,7 @@ function App() {
             minSize={20}
             style={{ overflow: 'hidden' }}
           >
-            <OutputInput output={output} setInput={setInput} error={error}/>
+            <OutputInput output={output} setInput={setInput} error={error} input={input}/>
           </SplitterPanel>
           <SplitterPanel 
             className="flex align-items-center justify-content-center" 
@@ -60,7 +53,7 @@ function App() {
             minSize={30}
             style={{ overflow: 'hidden' }}
           >
-            <CodeEditor setOutput={setOutput} input={input} setError={setError}/>
+            <CodeEditor setOutput={setOutput} setInput={setInput} input={input} output={output} setError={setError}error={error}/>
           </SplitterPanel>
         </Splitter>
       </Box>
@@ -79,7 +72,7 @@ function App() {
       overflow="hidden"
     >
       <Box 
-        width="100%" 
+        width="95%" 
         height="50%" 
         overflow="auto"
       >

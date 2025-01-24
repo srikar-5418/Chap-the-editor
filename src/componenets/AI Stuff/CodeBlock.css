@@ -1,0 +1,27 @@
+/* Target the scrollable div inside the code block */
+.code-block {
+    border-radius: 10px;
+    padding: 20px;
+    height: auto; /* Set a height for overflow */
+    overflow-x: auto; /* Enable scrolling if content exceeds */
+  }
+  
+  /* Scrollbar for webkit browsers (Chrome, Safari) */
+  .code-block::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .code-block::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+    border-radius: 10px;
+  }
+  
+  .code-block::-webkit-scrollbar-thumb {
+    background: #888; /* Thumb color */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  .code-block::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Hover effect */
+  }
+  

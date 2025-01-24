@@ -5,7 +5,7 @@ import SignInBar from "./signInBar";
 import { Splitter, SplitterPanel } from 'primereact/splitter';
 import "./Splitter.css";
 
-export default function OutputInput({output, setInput, error}) {
+export default function OutputInput({output, setInput, error,input}) {
   return (
     <Box 
       display="flex"
@@ -45,7 +45,7 @@ export default function OutputInput({output, setInput, error}) {
               overflow: 'hidden',
             }}
           >
-            <InputBox setInput={setInput}/>
+            <InputBox setInput={setInput} input={input}/>
           </SplitterPanel>
           <SplitterPanel 
             className="flex align-items-center justify-content-center"  

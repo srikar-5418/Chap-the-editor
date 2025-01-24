@@ -35,7 +35,7 @@ export default function UserLoggedIn(){
   const cancelRef = useRef()
   return(
       <>
-       <Avatar src={auth.currentUser.photoURL} onClick={onOpen} mt='-1'mr='1'/>
+       <Avatar src={auth.currentUser.photoURL} onClick={onOpen} mr='1'/>
               <Modal
               motionPreset='slideInBottom'
               leastDestructiveRef={cancelRef}

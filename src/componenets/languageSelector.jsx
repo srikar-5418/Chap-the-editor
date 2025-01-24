@@ -5,16 +5,25 @@ import {
     MenuItem,Button,
    Box,Flex,
   } from '@chakra-ui/react'
-  
+import { useEffect,useState } from 'react';
+import ResetChat from './AI Stuff/AiSetUp';
 import { LANGUAGE_VERSIONS } from '../languageInfo'
 import LanuageInfo from './LanguageInfo'
 import ResetCode from './ResetCode'
 import SetValues from './settings'
 import SaveIcon from './save'
+import Ai from './AI Stuff/AI'
 const languages=Object.entries(LANGUAGE_VERSIONS)
 
 // eslint-disable-next-line react/prop-types
-export default function LanguageSelector({language,handleLanguageChange,fntSize,handleFontChange,tbSize,handleTabSizeChange,toggleVimMode,isVimEnabled,isWordWrap,toggleWordWrap,editorRef,loadedCode}){
+export default function LanguageSelector({language,handleLanguageChange,fntSize,handleFontChange,tbSize,handleTabSizeChange,toggleVimMode,isVimEnabled,isWordWrap,toggleWordWrap,editorRef,loadedCode,input,output,error,setInput,value}){
+    const [chat,setChat]=useState(null);
+    async function toSetChat(){
+        setChat(await ResetChat());
+   }
+    useEffect(()=>{        
+            toSetChat();
+        },[])
    
     return (
         <Box ml={2} mb={2}>
@@ -50,6 +59,7 @@ export default function LanguageSelector({language,handleLanguageChange,fntSize,
             </Menu>
                     <LanuageInfo language={language}/>
             <Flex ml="auto" alignItems="center">
+                    <Ai chat={chat} toSetChat={toSetChat} input={input} output={output}  error={error} language={language} setInput={setInput} value={value} handleLanguageChange={handleLanguageChange}/>
                     <SaveIcon language={language} editorRef={editorRef} handleLanguageChange={handleLanguageChange} loadedCode={loadedCode}/>
                     <ResetCode language={language} handleChangeLanguage={handleLanguageChange} loadedCode={loadedCode}/>
                     <SetValues fntSize={fntSize}  handleFontChange={handleFontChange} tbSize={tbSize} handleTabSizeChange={handleTabSizeChange} toggleVimMode={toggleVimMode} isVimEnabled={isVimEnabled} isWordWrap={isWordWrap} toggleWordWrap={toggleWordWrap}/>

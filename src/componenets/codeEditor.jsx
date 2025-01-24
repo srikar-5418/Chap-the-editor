@@ -7,7 +7,7 @@ import Run from './run';
 import { db } from '../assets/firebase';
 import { doc,getDoc } from 'firebase/firestore';
 
-export default function CodeEditor({setOutput,input,setError}){
+export default function CodeEditor({setOutput,setInput,input,output,setError,error}){
     const editorRef = useRef(null);
     var statusNode = useRef(null);
     const [value,setValue]=useState('');
@@ -78,13 +78,24 @@ export default function CodeEditor({setOutput,input,setError}){
         setLoadedCode(null)
         setLanguage(languageSent)
         setValue(CODE_SNIPPETS[languageSent])
+        setOutput('')
+        setError(false)
       }
     }
     else{
-      const docSnap=await getDoc(doc(db,"code",value));
-      setLanguage(languageSent)
+      if(reset==="Ai"){
+        setValue(value);
+        setLoadedCode(null);
+        setLanguage(languageSent);
+      }
+      else{
+        const docSnap=await getDoc(doc(db,"code",value));
       setValue(docSnap.data().code)
+      setLanguage(languageSent)
       setLoadedCode(value)
+      setOutput('')
+      setError(false)
+      }
     }
    }
    return (
@@ -111,6 +122,11 @@ export default function CodeEditor({setOutput,input,setError}){
         toggleWordWrap={toggleWordWrap} 
         editorRef={editorRef} 
         loadedCode={loadedCode}
+        input={input}
+        output={output}
+        error={error}
+        setInput={setInput}
+        value={value}
       />
       <Editor 
         height={isVimEnabled ? '77.5%' : '82%'}
