@@ -6,13 +6,13 @@ import {
    Box,Flex,
   } from '@chakra-ui/react'
 import { useEffect,useState } from 'react';
-import ResetChat from './AI Stuff/AiSetUp';
+import ResetChat from './AiStuff/AiSetUp';
 import { LANGUAGE_VERSIONS } from '../languageInfo'
 import LanuageInfo from './LanguageInfo'
 import ResetCode from './ResetCode'
 import SetValues from './settings'
 import SaveIcon from './save'
-import Ai from './AI Stuff/AI'
+import Ai from './AiStuff/AI'
 const languages=Object.entries(LANGUAGE_VERSIONS)
 
 // eslint-disable-next-line react/prop-types
