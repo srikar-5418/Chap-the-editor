@@ -12,6 +12,7 @@ import { FaRunning } from "react-icons/fa";
 
 import MarkDown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 // eslint-disable-next-line react/prop-types
 export default function ChatTab({currentIndex,setTextBoxValue,messages,language,lastRef}){
@@ -38,7 +39,7 @@ export default function ChatTab({currentIndex,setTextBoxValue,messages,language,
                             <Box width="auto" height="auto" bg="green.500" borderRadius={10} p={2} mr='2'>{currentMessage.message}</Box>
                             </Box>) : (
                             <Box key={index} ref={index === currentIndex ? lastRef : null} borderRadius="2" mb="10px" width="98%"height="auto"bg="#0f0a19"p={2}>
-                            <MarkDown remarkPlugins={[remarkGfm]}>{currentMessage.message}</MarkDown></Box>
+                            <MarkDown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{currentMessage.message}</MarkDown></Box>
                         )
                         )))}
                     </Box>

@@ -5,6 +5,7 @@ import { LuClipboardCopy } from "react-icons/lu";
 
 import MarkDown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 
 // eslint-disable-next-line react/prop-types
@@ -13,7 +14,7 @@ return (<>
                     <Box  borderRadius="2" mb="10px" width="98%"height="auto"bg="#0f0a19"p={2}>
 
                 {/* eslint-disable-next-line react/prop-types */}
-                <MarkDown remarkPlugins={[remarkGfm]}>{currentIndex!==-1?(inputArr[Math.floor((currentIndex/2))].inputExplanation):('')}</MarkDown></Box>
+                <MarkDown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{currentIndex!==-1?(inputArr[Math.floor((currentIndex/2))].inputExplanation):('')}</MarkDown></Box>
                 <Box position="relative" borderRadius="2" mb="10px" width="98%"height="auto"bg="#0f0a19"p={2}>
                 {/* eslint-disable-next-line react/prop-types */}
                 {(currentIndex!==-1&&inputArr[Math.floor((currentIndex/2))].input!=="")?(<>
