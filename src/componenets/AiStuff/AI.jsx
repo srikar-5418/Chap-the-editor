@@ -129,7 +129,7 @@ export default function Ai({chat,toSetChat,input,output,language,setInput,value,
                                     cursor:'auto'
                                 },
                             }}/>
-                        <Button variant='outline' color='white' _hover={{ bg: 'white', color: 'black' }} size='sm' height='92%' marginLeft='1' onClick={()=>{if(textBoxValue.trim().length!==0)onAsk()}} onKeyDown={(e)=>{if(e.key==='Enter'){onAsk();}}} isLoading={isLoading}>Ask</Button>
+                        <Button variant='outline' color='white' _hover={{ bg: 'white', color: 'black' }} size='sm' height='92%' marginLeft='1' onClick={()=>{if(textBoxValue.trim().length!==0&&!isLoading)onAsk();setTextBoxValue("");}} onKeyDown={(e)=>{if(e.key==='Enter'){onAsk();}}} isLoading={isLoading}>Ask</Button>
                         </Box>
                     </DrawerFooter>
                     </DrawerContent>
