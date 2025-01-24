@@ -7,8 +7,8 @@ import MarkDown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
-import {vs2015 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import {vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import SyntaxHighlighter from "react-syntax-highlighter";
 
 // eslint-disable-next-line react/prop-types
 export default function CodeTab({currentIndex,codeArr,handleLanguageChange,toast,onClose}){
