@@ -96,7 +96,7 @@ export default function Ai({chat,toSetChat,input,output,language,setInput,value,
                     <DrawerCloseButton mt='1'/>
                     <DrawerHeader display='flex' flexDirection='row' alignItems='center' justifyContent='left'><Text>Ask Your Chap</Text><InfoButton/></DrawerHeader>
                     <DrawerBody sx={{height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column', }}>
-                        {currTab==="chat"?(<ChatTab currentIndex={currentIndex} setTextBoxValue={setTextBoxValue} messages={messages} language={language} lastRef={lastRef}/>):(<CodeAndInputBox titleRef={titleRef} currentIndex={currentIndex} codeArr={codeArr} currTab={currTab} onClose={onClose} toast={toast} inputArr={inputArr} setInput={setInput} handleLanguageChange={handleLanguageChange}/>)}
+                        {currTab==="chat"?(<ChatTab currentIndex={currentIndex} setTextBoxValue={setTextBoxValue} messages={messages} language={language} lastRef={lastRef}/>):(<CodeAndInputBox titleRef={titleRef} currentIndex={currentIndex} codeArr={codeArr} currTab={currTab} onClose={onClose} toast={toast} inputArr={inputArr} setInput={setInput} handleLanguageChange={handleLanguageChange} value={value} language={language}/>)}
                         <TabSwitchBottomButtom currTab={currTab} setCurrTab={setCurrTab} currentIndex={currentIndex} handleClearChat={handleClearChat} setCurrentIndex={setCurrentIndex} messages={messages}/>
                     </DrawerBody>
 
