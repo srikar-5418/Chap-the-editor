@@ -16,8 +16,6 @@ useEffect(()=>{
     if(currentIndex!==-1){
         //   eslint-disable-next-line react/prop-types
         setTextBoxValue(inputArr[Math.floor(currentIndex / 2)].input)
-        //   eslint-disable-next-line react/prop-types
-        console.log(inputArr[Math.floor(currentIndex / 2)].input);
     }else{
         setTextBoxValue("");
     }
